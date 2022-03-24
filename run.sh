@@ -2,4 +2,4 @@
 source ~/.bashrc
 source ~/.env
 nvm use v14.17.2
-nohup npx serve build &
+nohup npx serve --host 0.0.0.0 build &
