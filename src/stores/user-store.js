@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const API = "http://localhost:3000"
+const API = process.env.TUMBLR_ENDPOINT
 
 export const getUsers = async () => {
     const users = await axios.get(`${API}/`)
