@@ -38,13 +38,13 @@ function App() {
                 <td style={{ "verticalAlign": "top" }}><a href={user._id}>{user.user.name}</a></td>
                 <td style={{ "textAlign": "start" }}>{parse(user.bio)}</td>
                 <td style={user.posts.length > 0 ? { "verticalAlign": "top", "color": "red", "fontWeight": "bold", "width": "200px" } : { "verticalAlign": "top" }}>{user.posts.length > 0 ? <a href='#' onClick={() => { showPost === index ? setShowPost(null) : setShowPost(index) }}>{user.posts.length}</a> : user.posts.length}</td>
-                <td>{(() => {
+                <td style={{"verticalAlign": "top"}}>{(() => {
                   if (!user.flag) {
                     return "❓"
                   }
                   return user.flag
                 })()}</td>
-                <td>
+                <td style={{"verticalAlign": "top"}}>
                   <select onChange={async (e) => {
                     const response = await updateFlag(user._id, e.target.value)
                     if(response.status === 200) {
