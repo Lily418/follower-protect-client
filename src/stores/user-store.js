@@ -18,7 +18,7 @@ export const getUsers = async () => {
         }
     }
 
-    return stable(users.data, ((a, b) => a.posts.length !== b.posts.length ? a.posts.length < b.posts.length : a.flag !== b.flag ? flagIndex(a.flag) < flagIndex(b.flag) : a.date < b.date))
+    return stable(users.data, ((a, b) => a.flag !== b.flag ? flagIndex(a.flag) < flagIndex(b.flag) : a.date < b.date))
 }
 
 export const updateFlag = async (userId, flag) => {

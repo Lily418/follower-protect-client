@@ -25,8 +25,6 @@ function App() {
           <thead>
             <tr>
             <th>Name</th>
-            <th>Bio</th>
-            <th>Highlighted Posts</th>
             <th>Current Flag</th>
             <th>Update Flag</th>
             </tr>
@@ -35,9 +33,7 @@ function App() {
 
             {users && users.map((user, index) => {
               return (<tr key={user._id}>
-                <td style={{ "verticalAlign": "top" }}><a href={user._id}>{user.user.name}</a></td>
-                <td style={{ "textAlign": "start" }}>{parse(user.bio)}</td>
-                <td style={user.posts.length > 0 ? { "verticalAlign": "top", "color": "red", "fontWeight": "bold", "width": "200px" } : { "verticalAlign": "top" }}>{user.posts.length > 0 ? <a href='#' onClick={() => { showPost === index ? setShowPost(null) : setShowPost(index) }}>{user.posts.length}</a> : user.posts.length}</td>
+                <td style={{ "verticalAlign": "top" }}><a href={user._id}>{user.user?.name}</a></td>
                 <td style={{"verticalAlign": "top"}}>{(() => {
                   if (!user.flag) {
                     return "❓"
@@ -65,15 +61,6 @@ function App() {
             })}
           </tbody>
         </table>
-
-        <div style={{ "flex": 1 }}>
-          <h2>{showPost !== null ? users[showPost].user.name : ""}</h2>
-          {showPost !== null ? users[showPost].posts.map((post) => {
-            return (
-              parse(post)
-            )
-          }) : null}
-        </div>
       </div>
     </div>
   );
